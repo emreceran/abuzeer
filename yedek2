@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+import { View , SafeAreaView} from 'react-native';
+import { WebView } from 'react-native-webview';
+
+
+export default class App extends Component {
+  render() {
+    const run = `
+    document.querySelector(".header-minicart").style.display = "none";    
+    document.querySelector("a.mobile-toggle").addEventListener("click", function() {
+      document.getElementById("side-nav-panel").style.width = "100%";});
+      document.querySelector("a.side-nav-panel-close").addEventListener("click", function() {
+        document.getElementById("side-nav-panel").style.width = "260px";
+    });
+      true;
+    `;
+
+    setTimeout(() => {
+      this.webref.injectJavaScript(run);
+    }, 3000);
+
+    
+
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          ref={(r) => (this.webref = r)}
+          source={{
+            uri:
+              'https://abuzeer.com/my-account/',
+          }}
+          injectJavaScript={run}
+        />
+      </SafeAreaView>
+    );
+  }
+}

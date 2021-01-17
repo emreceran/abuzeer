@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { WebView } from 'react-native-webview';
+export default class app extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { webViewUrl: 'https://abuzeer.com' };
+  }
+render() {
+    const jsCode = `document.querySelector('.HeaderHero').style.backgroundColor = 'purple';`;
+    return (
+      <View style={styles.container}>
+        <WebView
+          ref={ref => {
+            this.webview = ref;
+          }}
+          source={{ uri: this.state.webViewUrl }}
+          originWhitelist={['*']}
+          javaScriptEnabledAndroid={true}
+          injectedJavaScript={jsCode}
+        />
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+});

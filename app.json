@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "abuzeer",
-    "slug": "abuzeer",
+    "name": "Abuzeer",
+    "slug": "Abuzeer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/abuzer.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,10 +23,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.emreceran.Abuzeer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Abuzeer Perakende Satış"
   }
 }

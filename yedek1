@@ -1,0 +1,162 @@
+import React, { Component } from 'react';
+import { View , SafeAreaView} from 'react-native';
+import { WebView } from 'react-native-webview';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+
+import { createStackNavigator, HeaderBackButton, } from '@react-navigation/stack';
+
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const run = `
+    document.querySelector(".header-minicart").style.display = "none";    
+    document.querySelector("a.mobile-toggle").addEventListener("click", function() {
+      document.getElementById("side-nav-panel").style.width = "100%";});
+      document.querySelector("a.side-nav-panel-close").addEventListener("click", function() {
+        document.getElementById("side-nav-panel").style.width = "260px";
+    });
+      true;
+    `;
+
+class Anasayfa extends Component {
+  render() {
+    setTimeout(() => {
+      this.webref.injectJavaScript(run);
+    }, 3000);
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          ref={(r) => (this.webref = r)}
+          source={{
+            uri:
+              'https://abuzeer.com/',
+          }}
+          injectJavaScript={run}
+        />
+      </SafeAreaView>
+    );
+  }
+
+}
+
+class Myaccount extends Component {
+  render() {
+    setTimeout(() => {
+      this.webref.injectJavaScript(run);
+    }, 3000);
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          ref={(r) => (this.webref = r)}
+          source={{
+            uri:
+              'https://abuzeer.com/my-account/',
+          }}
+          injectJavaScript={run}
+        />
+      </SafeAreaView>
+    );
+  }
+
+}
+
+class Wishlist extends Component {
+  render() {
+    setTimeout(() => {
+      this.webref.injectJavaScript(run);
+    }, 3000);
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          ref={(r) => (this.webref = r)}
+          source={{
+            uri:
+              'https://abuzeer.com/wishlist-2/',
+          }}
+          injectJavaScript={run}
+        />
+      </SafeAreaView>
+    );
+  }
+
+}
+
+class Cart extends Component {
+  render() {
+    setTimeout(() => {
+      this.webref.injectJavaScript(run);
+    }, 3000);
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          ref={(r) => (this.webref = r)}
+          source={{
+            uri:
+              'https://abuzeer.com/cart/',
+          }}
+          injectJavaScript={run}
+        />
+      </SafeAreaView>
+    );
+  }
+
+}
+
+
+function HomeStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Anasayfa}
+      options= {{
+        headerlef
+      }} />
+      
+    </Stack.Navigator>
+  );
+}
+
+function Accountstack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Myaccount" component={Myaccount}  />
+      
+    </Stack.Navigator>
+  );
+}
+
+function Wishliststack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Wishlist} />
+      
+    </Stack.Navigator>
+  );
+}
+
+function Cartstack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Cart} />
+      
+    </Stack.Navigator>
+  );
+}
+
+export default function App()  {
+  return (
+    <NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Myaccount" component={Accountstack} />
+      <Tab.Screen name="Wishlist" component={Wishliststack} />
+      <Tab.Screen name="Cart" component={Cartstack} />
+      
+    </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+
